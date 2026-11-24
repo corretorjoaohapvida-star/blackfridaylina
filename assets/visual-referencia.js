@@ -49,8 +49,6 @@
 
 
 (function(){
-  var fm = document.getElementById('floatMenu');
-  document.getElementById('floatToggle').addEventListener('click', function(){ fm.classList.toggle('open'); });
   var sticky = document.getElementById('stickyCta');
   var oferta = document.getElementById('oferta');
   var seen = false;
