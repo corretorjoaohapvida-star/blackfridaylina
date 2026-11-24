@@ -111,3 +111,26 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{
 .lina-feedback-card{margin:0;padding:16px;background:#fff;border:1px solid var(--borda);border-radius:24px;box-shadow:var(--sombra)}
 .va2 .lina-feedback-card img{display:block;width:100%;max-width:100%;height:auto;max-height:none;object-fit:contain;border-radius:12px}
 @media(max-width:600px){.va2 #feedbacks-lina .lina-feedback-wrap{padding-inline:16px}.lina-feedback-list{gap:16px}.lina-feedback-card{padding:10px;border-radius:18px}.va2 .lina-feedback-card img{border-radius:9px}}
+
+/* Mobile performance: autoplay only after decoding and while visible. */
+.va2 img{height:auto}
+.va-track{animation-play-state:paused;will-change:auto}
+.va-carousel.va-playing .va-track{animation-play-state:running;will-change:transform}
+.va-carousel.va-paused .va-track{animation-play-state:paused!important}
+.va2 .va-slide img{height:100%;width:100%;object-fit:contain}
+.va-carousel{contain:layout paint}
+.lina-gallery-control{display:flex;justify-content:center;margin:10px 0 4px}
+.lina-gallery-control button{font:inherit;font-size:12px;color:#8e245a;border:1px solid var(--borda);border-radius:999px;background:#fff8fb;min-height:44px;padding:9px 18px;cursor:pointer}
+.lina-more-transformations{display:grid;gap:32px;margin-top:32px}
+.lina-transformation-example h3{text-align:center;font-size:21px;margin:0 0 18px;line-height:1.3;color:#8e245a}
+.va2 .lina-transformation img{height:auto;max-height:460px;object-fit:contain}
+html{scroll-padding-top:110px}
+section[id]{scroll-margin-top:110px}
+.va2 .sticky-cta{padding-bottom:max(12px,env(safe-area-inset-bottom));backdrop-filter:none;background:rgba(255,248,251,.97)}
+.va2{padding-bottom:96px}
+@media(max-width:760px){.va-carousel{--va-slide-h:280px}.va2 .topbar{font-size:11px;gap:4px;padding:7px 10px}.va2 .topbar .clock{font-size:11px;padding:3px 9px}.va2 .lina-transformation{gap:12px}.va2 .lina-transformation figure{padding:12px}.va2 .lina-transformation img{max-height:none}.lina-transformation-example h3{font-size:19px}.va2 .cta.pulse{animation:none}.va2 .sticky-cta .cta{min-height:44px;width:100%;max-width:460px;font-size:13px;padding:12px}.va2 .sticky-cta{padding-inline:14px}}
+@media(prefers-reduced-motion:reduce){.va-track,.va2 .pulse{animation:none!important}.va-carousel{overflow-x:auto;touch-action:pan-x pan-y}.va2 .cta,.va2 .sticky-cta{transition:none!important}.lina-gallery-control{display:none}}
+
+/* Comparação mais rápida no celular, sem ocultar os benefícios. */
+.va2 .offers ul{align-content:start}
+@media(max-width:860px){.va2 .offers>.offer{align-self:start}.va2 .offers .head{min-height:124px}.va2 .offers .pick{order:1;min-height:46px}.va2 .offers .offer-pricing{order:2}.va2 .offers .body>.cta{order:3;min-height:80px}.va2 .offers .body>ul{order:4;flex:0;margin-top:18px;font-size:11px}.va2 .offers ul li{font-size:11px;line-height:1.5}.va2 .offers .body>img{order:0}.va2 .offers .body{justify-content:flex-start}}
