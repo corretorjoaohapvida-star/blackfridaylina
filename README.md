@@ -16,7 +16,7 @@ Meta Pixel 1119672483929286 instalado no body de index.html. Evento PageView, se
 
 ## Pendencias antes de anunciar
 
-Os tres links de checkout em config.js continuam vazios por decisao do proprietario de configura-los depois; os botoes de compra permanecem bloqueados. Total de arquivos finais depende do inventario do acervo. Conferir acesso e entrega dos arquivos na Hotmart.
+Os tres links de checkout em config.js continuam vazios por decisao do proprietario de configura-los depois; os botoes de compra permanecem bloqueados. Inventario do acervo: 709 arquivos compactados (708 ZIP + 1 RAR), 705 ao excluir catalogo e tres provaveis duplicatas. Chamada do pack completo: +700 arquivos para baixar em ZIP/RAR. Isso nao significa 700 artes ou temas distintos; o conteudo interno dos compactados nao foi contado. Conferir acesso e entrega dos arquivos na Hotmart.
 
 O repositorio contem apenas a pagina publica e seus assets. Sem pastas privadas de produto, links de Drive, fotos originais nao usadas, tokens ou historicos de conversas.
 
