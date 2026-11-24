@@ -26,3 +26,13 @@
 .va2 .legal{background:#5a344c;color:#f3dbe8}.va2 .legal a{color:#ffe5b6}
 .va2 .reviews::-webkit-scrollbar-thumb{background:#e8c2d6}
 a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{outline-color:#963066}
+
+/* Ofertas em fileira no celular */
+.va2 .offers-scroll-hint{display:none}
+@media(max-width:860px){
+ .va2 .offers-scroll-hint{display:block;text-align:center;color:var(--azul-esc);font-size:13px;font-weight:700;margin:0 0 12px}
+ .va2 .offers{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(260px,86%);max-width:100%;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:4px;padding:8px 4px 24px;align-items:stretch;scrollbar-width:thin;scrollbar-color:#d58aaf #fff0f6}
+ .va2 .offers>.offer{min-width:0;scroll-snap-align:start}
+ .va2 .offers::-webkit-scrollbar{height:6px}
+ .va2 .offers::-webkit-scrollbar-thumb{background:#d58aaf;border-radius:999px}
+}
