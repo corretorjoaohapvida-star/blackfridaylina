@@ -16,8 +16,14 @@ Meta Pixel 1119672483929286 instalado no body de index.html. Evento PageView, se
 
 ## Pendencias antes de anunciar
 
-Os tres checkouts fornecidos pelo proprietario estao configurados em config.js e nos botoes do HTML: R$37 = N108637560X; R$67 = B108637591H; R$97 = P108637619X?off=iaynsxie. URLs conferidas no codigo; pagamento e entrega nao foram testados. Inventario do acervo: 709 arquivos compactados (708 ZIP + 1 RAR), 705 ao excluir catalogo e tres provaveis duplicatas. Chamada do pack completo: +700 arquivos para baixar em ZIP/RAR. Isso nao significa 700 artes ou temas distintos; o conteudo interno dos compactados nao foi contado. Conferir acesso e entrega dos arquivos na Hotmart.
+Os tres checkouts fornecidos pelo proprietario estao configurados em config.js e nos botoes do HTML: R$37 = N108637560X; R$67 = B108637591H; R$97 = P108637619X?off=iaynsxie. URLs conferidas no codigo; pagamento e entrega nao foram testados. Inventario do acervo: 709 arquivos compactados (708 ZIP + 1 RAR), 705 ao excluir catalogo e tres provaveis duplicatas. Os 709 pacotes sao uma medida de organizacao. A quantidade de mais de 13 mil artes foi confirmada pelo proprietario com Aline em 24/11; o conteudo interno nao foi auditado independentemente. Conferir acesso e entrega dos arquivos na Hotmart.
 
 O repositorio contem apenas a pagina publica e seus assets. Sem pastas privadas de produto, links de Drive, fotos originais nao usadas, tokens ou historicos de conversas.
 
 Pronto para importar na Vercel; deploy e recebimento real do evento no Meta Events Manager ainda nao comprovados.
+
+## Expansao aprovada em 24/11/2026
+
+Mais de 13 mil artes no pack completo: quantidade confirmada pelo proprietario com Aline, sem auditoria independente dos arquivos internos. Substitui a chamada de 700 arquivos na abertura; os 709 pacotes continuam sendo outra medida.
+
+Novos blocos: modelo e conjunto produzido, composicao de kit, para quem e exemplo de apresentacao de modelos. app/index.html e uma vitrine publica navegavel com imagens de apresentacao, busca, selecao e favoritos locais; nao e uma area de membros nem libera arquivos de producao.
