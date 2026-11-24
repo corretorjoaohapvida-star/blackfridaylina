@@ -88,3 +88,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{
 .lina-formats article>span{display:inline-block;color:var(--azul);font-family:Montserrat,sans-serif;font-weight:900;font-size:27px;letter-spacing:-.5px;margin-bottom:14px}
 .lina-formats h3{font-size:16px;line-height:1.35}.lina-formats p{font-size:13px;line-height:1.65;color:var(--tinta-2);margin-bottom:0}
 @media(max-width:760px){.lina-formats{grid-template-columns:1fr 1fr;gap:12px}.lina-formats article{padding:18px 14px}.lina-formats article>span{font-size:23px}}
+
+/* Hierarquia e ritmo de preços iguais nos três packs. */
+.va2 .offers .offer-pricing{padding-top:14px;text-align:center}
+.va2 .offers .price-old{display:flex;align-items:baseline;justify-content:center;gap:7px;min-height:0;color:#765362;font-weight:800;font-size:21px;line-height:1.3;margin:0}
+.va2 .offers .price-old .price-from-label{font-size:15px;font-weight:900;color:#654050}
+.va2 .offers .price-old s{font-size:21px;text-decoration-thickness:2px;text-decoration-color:#a85e7e}
+.va2 .offers .price-now{font-size:12px;font-weight:800;letter-spacing:1.5px;line-height:1.2;min-height:0;margin:10px 0 7px;color:#765362}
+.va2 .offers .price-big{margin:0 0 14px;line-height:1}
+.va2 .offers .unidade{margin:0 0 14px;min-height:0;font-size:11px;line-height:1.5}
+@media(max-width:860px){.va2 .offers .offer-pricing{padding-top:10px}.va2 .offers .price-old{gap:3px;font-size:clamp(12px,2.5vw,18px);white-space:nowrap;letter-spacing:-.35px}.va2 .offers .price-old .price-from-label{font-size:clamp(10px,2vw,13px);letter-spacing:0}.va2 .offers .price-old s{font-size:clamp(12px,2.5vw,18px);text-decoration-thickness:1.5px}.va2 .offers .price-now{font-size:10px;margin:8px 0 6px;letter-spacing:1px}.va2 .offers .price-big{margin:0 0 10px}.va2 .offers .unidade{font-size:9px;min-height:28px;margin-bottom:10px}}
+
+/* Mockups dos packs: composição completa, sem corte. */
+.va2 .offers .offer .body>img.offer-pack-mockup{width:100%;height:auto;max-height:none;aspect-ratio:1/1;object-fit:contain;border-radius:12px;margin:0 auto 14px;background:#fff8fb}
+
+.va2 .best-seller-label{display:inline-block;align-self:center;background:#ffe6ad;color:#6e264e;border:1px solid #fff0d1;border-radius:999px;padding:5px 13px;font-size:11px;font-weight:900;letter-spacing:.7px;margin:0 auto 10px;line-height:1.2}@media(max-width:860px){.va2 .best-seller-label{font-size:8px;letter-spacing:.2px;padding:5px 7px;margin-bottom:8px}}
