@@ -1,29 +1,41 @@
-# Black Friday Lina Criativa
+# Lina Criativa — Aluninha e Coletiva Escolar2027
 
-Pagina estatica de Volta as Aulas 2027.
+Página de vendas estática. Esta versão substitui a oferta anterior de oito coletivas Black Friday.
 
 ## Vercel
 
-Importe este repositorio. Framework: Other. Root Directory: raiz do repositorio. Sem Install Command e sem Build Command. Output Directory: `.` (definido em vercel.json).
+Importe `corretorjoaohapvida-star/blackfridaylina` com estas opções:
 
-## Pixel
+- Production Branch: `main`.
+- Framework Preset: **Other**.
+- Root Directory: raiz do repositório.
+- Build Command: nenhum; `null` no `vercel.json`.
+- Install Command: nenhum; não há dependências ou `package.json`.
+- Output Directory: `.`; configurado no `vercel.json`.
+- Nenhuma variável de ambiente é necessária para servir a página.
 
-Meta Pixel 1119672483929286 instalado no body de index.html. Evento PageView, sem Purchase nesta pagina. A CSP permite o script oficial e a imagem/evento da Meta, com hash do script inline. Nenhum token de API foi incluido. Se alterar o script inline, atualize seu hash CSP.
+`index.html`, `config.js`, `vercel.json` e os assets públicos estão na raiz. O projeto não precisa de servidor Node nem de etapa de compilação. Um projeto Vercel já conectado à branchmain pode iniciar um deploy após o push; confira o status na plataforma. Este commit não comprova a conclusão desse deploy.
 
-## Oferta
+## Ofertas e destinos
 
-1 coletiva sortida R$37; 3 sortidas R$67; pack completo de 8 R$97. Condicao ate 30/11/2026, 23h59, Brasilia. Encerramento comercial manual.
+| Caminho | Valor total | URL |
+|---|---|---|
+| Aluninha+Menino / recusa do pop-up | R$17,90 | https://pay.wiapy.com/8YM4jR-c4yfT |
+| Coletiva completa diretamente na página | R$37,90 | https://pay.wiapy.com/6b0762983abee4176b743b65 |
+| Coletiva completa aceita no pop-up | R$27,90 | https://pay.wiapy.com/8K61XNB0LF3 |
 
-## Pendencias antes de anunciar
+O clique no plano de entrada abre o pop-up. Aceitar leva ao checkout especial; recusar mantém o kit de entrada. Os três destinos têm chaves independentes em `config.js`. O valor de27,90 substitui o valor de17,90; não representa cobrança adicional automática.
 
-Os tres checkouts fornecidos pelo proprietario estao configurados em config.js e nos botoes do HTML: R$37 = N108637560X; R$67 = B108637591H; R$97 = P108637619X?off=iaynsxie. URLs conferidas no codigo; pagamento e entrega nao foram testados. Inventario do acervo: 709 arquivos compactados (708 ZIP + 1 RAR), 705 ao excluir catalogo e tres provaveis duplicatas. Os 709 pacotes sao uma medida de organizacao. A quantidade de mais de 13 mil artes foi confirmada pelo proprietario com Aline em 24/11; o conteudo interno nao foi auditado independentemente. Conferir acesso e entrega dos arquivos na Hotmart.
+## Conteúdo e pixel
 
-O repositorio contem apenas a pagina publica e seus assets. Sem pastas privadas de produto, links de Drive, fotos originais nao usadas, tokens ou historicos de conversas.
+Coletiva apresentada com92kits, mais de1.700artes, miolos2027 e quatro bônus. A quantidade é a base de modelos do catálogo; não uma nova auditoria recursiva de arquivos únicos. Os conteúdos e bônus precisam corresponder à entrega mantida pela produtora. A licença permite produzir/vender peças físicas e proíbe revenda ou compartilhamento dos arquivos.
 
-Pronto para importar na Vercel; deploy e recebimento real do evento no Meta Events Manager ainda nao comprovados.
+Meta Pixel **1119672483929286**: script original no body, inicialização e PageView. Nenhum token de API está no projeto. Não há eventoPurchase configurado nesta página. A CSP usa hash do script inline; se alterar esse script, recalcule o hash.
 
-## Expansao aprovada em 24/11/2026
+O banner usa o contador diário já aprovado pelo proprietário. A meta de robôs `noindex,nofollow` foi preservada. Carrosséis automáticos respeitam redução de movimento. Mockups responsivos e imagens abaixo da abertura são carregados sob demanda.
 
-Mais de 13 mil artes no pack completo: quantidade confirmada pelo proprietario com Aline, sem auditoria independente dos arquivos internos. Substitui a chamada de 700 arquivos na abertura; os 709 pacotes continuam sendo outra medida.
+## Verificação
 
-Novos blocos: modelo e conjunto produzido, composicao de kit, para quem e exemplo de apresentacao de modelos. app/index.html e uma vitrine publica navegavel com imagens de apresentacao, busca, selecao e favoritos locais; nao e uma area de membros nem libera arquivos de producao.
+Fluxos de saída, pop-up, pixel/CSP e layout mobile foram conferidos em Chrome local. Destinos de checkout foram respondidos localmente durante os testes: isso não comprova preço configurado na Wiapy, pagamento, entrega ou recebimento de eventos pela Meta em produção.
+
+O repositório publica somente a página, seus arquivos de configuração e assets referenciados. A vitrine/app e a página de obrigado da oferta antiga foram retiradas desta versão, assim como os assets antigos sem uso. A versão anterior permanece no histórico Git. Arquivos privados de entrega, links do Drive, relatórios internos, prompts e credenciais não são publicados.

@@ -2,7 +2,6 @@
 (() => {
   const galleries = [...document.querySelectorAll('[data-va="carousel"]')];
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(pointer:fine)');
   const toggle = document.getElementById('gallery-motion-toggle');
   let userPaused = false;
   const updatePlayback = gallery => {
@@ -23,11 +22,20 @@
   const prepare = async gallery => {
     if (gallery.dataset.preparing) return;
     gallery.dataset.preparing = 'true';
-    const images = [...gallery.querySelectorAll('img')];
-    // Warm the whole loop before it moves; transformed lazy images otherwise stay blank.
-    images.forEach((img, i) => { img.loading = 'eager'; if (i > 3) img.fetchPriority = 'low'; });
-    await Promise.allSettled(images.map(img => img.decode()));
     measure(gallery);
+    const images = [...gallery.querySelectorAll('img')];
+    const firstSlide = gallery.querySelector('.va-slide');
+    const visibleCount = Math.max(1, Math.ceil(gallery.clientWidth / Math.max(1, firstSlide.getBoundingClientRect().width)) + 1);
+    // Warm the loop nearby, but do not let one distant image hold up autoplay.
+    const decoded = images.map((img, i) => {
+      img.loading = 'eager';
+      if (img.fetchPriority !== 'high') img.fetchPriority = i < visibleCount ? 'auto' : 'low';
+      return img.decode().catch(() => {});
+    });
+    await Promise.race([
+      Promise.allSettled(decoded.slice(0, visibleCount)),
+      new Promise(resolve => setTimeout(resolve, 1800))
+    ]);
     gallery.classList.add('va-ready');
     updatePlayback(gallery);
   };
@@ -45,14 +53,14 @@
   }
   galleries.forEach(gallery => {
     let resumeTimer;
-    const pause = () => { clearTimeout(resumeTimer); gallery.classList.add('va-paused'); };
+    const pause = () => { clearTimeout(resumeTimer); gallery.classList.add('va-paused'); resumeTimer = setTimeout(() => gallery.classList.remove('va-paused'), 3000); };
     const resume = () => { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => gallery.classList.remove('va-paused'), 1000); };
     gallery.addEventListener('pointerdown', pause, { passive: true });
     gallery.addEventListener('pointerup', resume, { passive: true });
     gallery.addEventListener('pointercancel', resume, { passive: true });
-    gallery.addEventListener('pointerleave', () => { if (finePointer.matches) resume(); });
-    gallery.addEventListener('mouseenter', () => { if (finePointer.matches) pause(); });
-    gallery.addEventListener('mouseleave', () => { if (finePointer.matches) resume(); });
+    gallery.addEventListener('pointerleave', resume, { passive: true });
+    window.addEventListener('pointerup', resume, { passive: true });
+    window.addEventListener('blur', resume);
   });
   if (toggle) toggle.addEventListener('click', () => {
     userPaused = !userPaused;

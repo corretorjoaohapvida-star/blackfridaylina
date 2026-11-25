@@ -1,6 +1,1 @@
-/* Checkouts Hotmart fornecidos pelo proprietário: 1, 3 e 8 coletivas. */
-window.OFERTA_CONFIG = Object.freeze({
-  checkoutUma: "https://pay.hotmart.com/N108637560X",
-  checkoutTres: "https://pay.hotmart.com/B108637591H",
-  checkoutOito: "https://pay.hotmart.com/P108637619X?off=iaynsxie"
-});
+window.OFERTA_CONFIG=Object.freeze({checkoutKit:"https://pay.wiapy.com/8YM4jR-c4yfT",checkoutColetiva:"https://pay.wiapy.com/6b0762983abee4176b743b65",checkoutColetivaEspecial:"https://pay.wiapy.com/8K61XNB0LF3"});
