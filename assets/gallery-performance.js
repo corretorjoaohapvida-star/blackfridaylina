@@ -16,7 +16,7 @@
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
     const distance = (slides[0].getBoundingClientRect().width + gap) * half;
     gallery.style.setProperty('--va-loop-x', -distance + 'px');
-    gallery.style.setProperty('--va-duration', Math.max(40, distance / (innerWidth < 768 ? 38 : 55)) + 's');
+    gallery.style.setProperty('--va-duration', Math.max(8, distance / (innerWidth < 768 ? 76 : 110)) + 's');
     slides.slice(half).forEach(slide => slide.setAttribute('aria-hidden', 'true'));
   };
   const prepare = async gallery => {
