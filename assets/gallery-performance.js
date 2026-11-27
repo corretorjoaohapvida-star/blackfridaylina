@@ -52,15 +52,83 @@
     galleries.forEach(gallery => { gallery.classList.add('va-visible'); prepare(gallery); });
   }
   galleries.forEach(gallery => {
-    let resumeTimer;
-    const pause = () => { clearTimeout(resumeTimer); gallery.classList.add('va-paused'); resumeTimer = setTimeout(() => gallery.classList.remove('va-paused'), 3000); };
-    const resume = () => { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => gallery.classList.remove('va-paused'), 1000); };
-    gallery.addEventListener('pointerdown', pause, { passive: true });
-    gallery.addEventListener('pointerup', resume, { passive: true });
-    gallery.addEventListener('pointercancel', resume, { passive: true });
-    gallery.addEventListener('pointerleave', resume, { passive: true });
-    window.addEventListener('pointerup', resume, { passive: true });
-    window.addEventListener('blur', resume);
+    const track = gallery.querySelector('[data-va="track"]');
+    let resumeTimer, gesture = null, fallbackOffset = 0;
+    gallery.style.touchAction = 'pan-y pinch-zoom';
+    gallery.style.overflowX = 'hidden';
+    gallery.style.cursor = 'grab';
+    if (!gallery.hasAttribute('tabindex')) gallery.tabIndex = 0;
+    if (!gallery.hasAttribute('role')) gallery.setAttribute('role', 'region');
+    const geometry = () => ({
+      distance: Math.abs(parseFloat(gallery.style.getPropertyValue('--va-loop-x'))) || 1,
+      duration: (parseFloat(gallery.style.getPropertyValue('--va-duration')) || 40) * 1000
+    });
+    const phase = () => {
+      const { distance, duration } = geometry();
+      const animation = track.getAnimations()[0];
+      return animation ? Number(animation.currentTime || 0) / duration * distance : fallbackOffset;
+    };
+    const moveTo = position => {
+      const { distance, duration } = geometry();
+      const wrapped = ((position % distance) + distance) % distance;
+      const animation = track.getAnimations()[0];
+      if (animation) {
+        track.style.removeProperty('transform');
+        animation.currentTime = wrapped / distance * duration;
+      } else {
+        fallbackOffset = wrapped;
+        track.style.transform = `translate3d(${-wrapped}px,0,0)`;
+      }
+    };
+    const pause = () => { clearTimeout(resumeTimer); gallery.classList.add('va-paused'); };
+    const resume = (delay = 1800) => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        if (!gesture) gallery.classList.remove('va-paused');
+      }, delay);
+    };
+    const finish = event => {
+      if (!gesture || (event && event.pointerId !== undefined && event.pointerId !== gesture.id)) return;
+      const id = gesture.id;
+      gesture = null;
+      gallery.style.cursor = 'grab';
+      if (gallery.hasPointerCapture(id)) gallery.releasePointerCapture(id);
+      resume();
+    };
+    gallery.addEventListener('dragstart', event => event.preventDefault());
+    gallery.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0) || gesture) return;
+      if (event.target.closest('a,button,input,select,textarea')) return;
+      pause();
+      gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, phase: phase(), axis: null };
+    });
+    gallery.addEventListener('pointermove', event => {
+      if (!gesture || event.pointerId !== gesture.id) return;
+      const dx = event.clientX - gesture.x, dy = event.clientY - gesture.y;
+      if (!gesture.axis) {
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 6) return;
+        if (Math.abs(dy) > Math.abs(dx)) { finish(event); return; }
+        gesture.axis = 'x';
+        gallery.setPointerCapture(gesture.id);
+        gallery.style.cursor = 'grabbing';
+      }
+      event.preventDefault();
+      moveTo(gesture.phase - dx);
+    }, { passive: false });
+    gallery.addEventListener('pointerup', finish);
+    gallery.addEventListener('pointercancel', finish);
+    gallery.addEventListener('lostpointercapture', event => { if (event.target === gallery) finish(event); });
+    window.addEventListener('pointerup', finish);
+    window.addEventListener('blur', () => finish());
+    gallery.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      pause();
+      const slide = track.querySelector('.va-slide');
+      const step = slide.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).gap) || 0);
+      moveTo(phase() + (event.key === 'ArrowRight' ? step : -step));
+      resume();
+    });
   });
   if (toggle) toggle.addEventListener('click', () => {
     userPaused = !userPaused;

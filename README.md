@@ -1,6 +1,6 @@
 # Mega Coleção Volta às Aulas — Lina Criativa
 
-Página estática em português do Brasil. Inclui a oferta Aluninha + Menino e a Mega Coleção completa, o popup de upgrade e a prévia protegida “Veja por dentro”.
+Página estática em português do Brasil. Inclui a oferta Aluninha + Menino e a Mega Coleção completa, o popup de upgrade e o vídeo “Veja por dentro”.
 
 ## Vercel
 
@@ -11,14 +11,14 @@ Página estática em português do Brasil. Inclui a oferta Aluninha + Menino e a
 - Output Directory: `.`.
 - Não requer instalação de dependências ou variáveis de ambiente.
 
-O `vercel.json` preserva URLs HTML explícitas para os links e recursos relativos da prévia. `index.html` é a entrada; `por-dentro/index.html` é a prévia navegável. Essa prévia mostra imagens reduzidas dos arquivos, sem distribuir os originais pagos.
+O `vercel.json` preserva URLs HTML explícitas para os links e recursos relativos da prévia. `index.html` é a entrada. A seção Veja por dentro contém somente o vídeo; o app navegável não faz parte desta publicação.
 
 ## Conteúdo e configuração
 
 - `index.html`: página, história da Lina, comparações, etiquetas, ofertas e FAQ.
 - `config.js`: destinos Wiapy de R$17,90, R$37,90 e da opção de R$27,90.
 - `assets/`: imagens, vídeo, fontes locais, estilos e interações.
-- `por-dentro/`: prévia da biblioteca.
+- O app de prévia foi retirado da publicação. As amostras reduzidas usadas nos carrosséis ficam em `assets/`.
 
 Pixel Meta mantido: `1119672483929286`. Nenhum token de API é necessário no navegador. Eventos de seleção e visualização não representam compras aprovadas.
 
